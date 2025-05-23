@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
+import type { RootState } from '../store';
 import { fetchTasks, deleteTask, updateTask } from '../features/tasks/tasksSlice';
 import type { Task } from '../features/tasks/tasksSlice';
+import type { AppDispatch } from '../store';
 
 export const TaskList = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { items: tasks, status, error } = useSelector((state: RootState) => state.tasks);
 
   useEffect(() => {
